@@ -33,21 +33,21 @@ const ShoppingCartElement: React.FC<ShoppingCartItemProps> = ({
               <p>QUANTITY:</p>
               <div className="border border-white flex rounded-full w-8 md:w-20 md:text-2xl justify-around font-bold md:px-2 md:mx-3 mx-2">
                 <p
+                  className="cursor-pointer"
                   onClick={() => {
                     changeQuantity("remove", item);
                     setCounter((quantity -= 1));
                   }}
-                  className='cursor-pointer'
                 >
                   -
                 </p>
                 {counter}
                 <p
+                  className="cursor-pointer"
                   onClick={() => {
                     changeQuantity("add", item);
                     setCounter((quantity += 1));
                   }}
-                  className='cursor-pointer'
                 >
                   +
                 </p>
