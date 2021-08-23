@@ -94,7 +94,6 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
     <div className="w-screen h-screen bg-black bg-opacity-70 absolute z-10 flex justify-end">
       <div className=" w-screen h-screen sm:w-51.5 bg-black border-b border-l border-white flex  flex-col md:justify-between items-center">
         <p
-          shoppingCart
           className="self-end py-4 md:py-10 px-10 font-bold text-sm md:text-2xl"
           onClick={toggleShoppingCart}
         >
