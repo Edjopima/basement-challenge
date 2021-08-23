@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product, handleAddToCart}) => 
     >
       <div className="bg-gradient-to-b from-black via-black to-gradient-black-0 relative">
         <Image alt={product.name} height={577} src={product.image} width={435} />
-        <div className="absolute bottom-5/12 left-1/4 hover-target">
+        <div className="absolute bottom-5/12 right-7 sm:left-1/4 hover-target">
           <Image alt="Add To Cart" src={addToCart} />
         </div>
       </div>
