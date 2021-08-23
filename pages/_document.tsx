@@ -1,18 +1,18 @@
-import Document, {Html,Head,Main,NextScript} from 'next/document'
+import Document, {Html, Head, Main, NextScript} from "next/document";
 
 class MyDocument extends Document {
   render() {
-    return(
-      <Html lang='en' >
+    return (
+      <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="/favicon.ico" />
+          <link href="/favicon.ico" rel="shortcut icon" />
         </Head>
         <body>
-          <Main/>
+          <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
