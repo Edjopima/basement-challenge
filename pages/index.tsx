@@ -52,9 +52,14 @@ const Home = ({productList}: {productList: Product[]}) => {
 
   useEffect(() => {
     const rawCart = window.localStorage.getItem("cart");
-    const cart = JSON.parse(rawCart as string);
 
-    setShoppingCart(cart);
+    if (rawCart) {
+      const cart = JSON.parse(rawCart as string);
+
+      setShoppingCart(cart);
+    } else {
+      setShoppingCart([]);
+    }
   }, []);
 
   return (
