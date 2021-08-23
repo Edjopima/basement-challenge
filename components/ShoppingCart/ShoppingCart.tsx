@@ -43,6 +43,14 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
     window.localStorage.setItem("cart", JSON.stringify(shoppingCart));
   };
 
+  const changeSize = (product: ShoppingCartItem, size: string) => {
+    const newCart = [...shoppingCart];
+    const index = newCart.indexOf(product);
+
+    newCart[index].size = size;
+    setShoppingCart(newCart);
+  };
+
   const getTotal = (cart: ShoppingCartItem[]) => {
     let newTotal: number = 0;
 
@@ -78,7 +86,12 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
         </div>
         <div className=" py-8 h-3/6 md:py-11 md:h-4/6 overflow-y-scroll">
           {shoppingCart.map((product, i) => (
-            <ShoppingCartElement key={i} changeQuantity={changeQuantity} item={product} />
+            <ShoppingCartElement
+              key={i}
+              changeQuantity={changeQuantity}
+              changeSize={changeSize}
+              item={product}
+            />
           ))}
         </div>
         <div className=" text-xl self-end w-full flex items-center md:text-4xl md:border-t border-white h-24 flex-col md:flex-row">
@@ -87,7 +100,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
             <p>${total}</p>
           </div>
           <div
-            className=" flex justify-center md:border-l border-t md:border-t-0 w-11/12 py-2  border-white md:w-72 md:py-6 md:px-8"
+            className="cursor-pointer flex justify-center md:border-l border-t md:border-t-0 w-11/12 py-2  border-white md:w-72 md:py-6 md:px-8"
             onClick={handleCheckout}
           >
             <Image alt="Checkout" height={42} src={checkout} width={235} />
