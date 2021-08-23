@@ -47,11 +47,8 @@ const Home = ({productList}: {productList: Product[]}) => {
     } else {
       setShoppingCart([...shoppingCart, {product, quantity: 1}]);
     }
-  };
-
-  useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(shoppingCart));
-  }, [shoppingCart]);
+  };
 
   useEffect(() => {
     const rawCart = window.localStorage.getItem("cart");
