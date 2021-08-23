@@ -54,7 +54,8 @@ const Home = ({productList}: {productList: Product[]}) => {
   }, [shoppingCart]);
 
   useEffect(() => {
-    const cart = JSON.parse(window.localStorage.getItem("cart"));
+    const rawCart = window.localStorage.getItem("cart");
+    const cart = JSON.parse(rawCart as string);
 
     setShoppingCart(cart);
   }, []);
