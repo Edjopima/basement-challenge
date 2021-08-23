@@ -40,6 +40,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
         setShoppingCart(newCart);
       }
     }
+    window.localStorage.setItem("cart", JSON.stringify(shoppingCart));
   };
 
   const getTotal = (cart: ShoppingCartItem[]) => {
