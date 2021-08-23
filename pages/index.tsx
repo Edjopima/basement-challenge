@@ -49,6 +49,17 @@ const Home = ({productList}: {productList: Product[]}) => {
     }
   };
 
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(shoppingCart));
+  }, [shoppingCart]);
+
+  useEffect(() => {
+    const rawCart = window.localStorage.getItem("cart");
+    const cart = JSON.parse(rawCart as string);
+
+    setShoppingCart(cart);
+  }, []);
+
   return (
     <div className="w-full flex bg-black flex-col">
       <ShoppingCart

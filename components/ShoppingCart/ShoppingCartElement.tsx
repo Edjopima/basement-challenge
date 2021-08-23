@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Image from "next/image";
 
-import {Product} from "../../product/types";
 import {ShoppingCartItem} from "../../types/shoppingCartTypes";
 
 interface ShoppingCartItemProps {
