@@ -45,7 +45,7 @@ const Home = ({productList}: {productList: Product[]}) => {
       newCart.splice(index, 1, element);
       setShoppingCart(newCart);
     } else {
-      setShoppingCart([...shoppingCart, {product, quantity: 1}]);
+      setShoppingCart([...shoppingCart, {product, quantity: 1, size: "S"}]);
     }
     window.localStorage.setItem("cart", JSON.stringify(shoppingCart));
   };

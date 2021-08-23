@@ -6,12 +6,16 @@ import {ShoppingCartItem} from "../../types/shoppingCartTypes";
 interface ShoppingCartItemProps {
   item: ShoppingCartItem;
   changeQuantity: (type: String, product: ShoppingCartItem) => void;
+  changeSize: (product: ShoppingCartItem, size: string) => void;
 }
 
-const ShoppingCartElement: React.FC<ShoppingCartItemProps> = ({item, changeQuantity}) => {
-  const [selected, setSelected] = useState("");
+const ShoppingCartElement: React.FC<ShoppingCartItemProps> = ({
+  item,
+  changeQuantity,
+  changeSize,
+}) => {
   let {product, quantity} = item;
-  const [counter, setCounter] = useState(quantity);
+  const [counter, setCounter] = useState<number>(quantity);
 
   return (
     <div className="border border-white w-80 h-32 md:h-64 md:w-47.5 mx-8 my-6 flex">
@@ -33,6 +37,7 @@ const ShoppingCartElement: React.FC<ShoppingCartItemProps> = ({item, changeQuant
                     changeQuantity("remove", item);
                     setCounter((quantity -= 1));
                   }}
+                  className='cursor-pointer'
                 >
                   -
                 </p>
@@ -42,6 +47,7 @@ const ShoppingCartElement: React.FC<ShoppingCartItemProps> = ({item, changeQuant
                     changeQuantity("add", item);
                     setCounter((quantity += 1));
                   }}
+                  className='cursor-pointer'
                 >
                   +
                 </p>
@@ -52,10 +58,10 @@ const ShoppingCartElement: React.FC<ShoppingCartItemProps> = ({item, changeQuant
               {product.options[0].values.map((e, i) => (
                 <div
                   key={i}
-                  className={`px-1 pt-1 md:px-2 ${
-                    selected === e ? "border border-white rounded-full" : ""
+                  className={`cursor-pointer px-1 pt-1 md:px-2 ${
+                    item.size === e ? "border border-white rounded-full" : ""
                   }`}
-                  onClick={() => setSelected(e)}
+                  onClick={() => changeSize(item, e)}
                 >
                   {e}
                 </div>
