@@ -23,6 +23,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
 }) => {
   const [total, setTotal] = useState<number>();
 
+  // functions to set quantity, size and total
   const changeQuantity = (type: String, product: ShoppingCartItem): void => {
     const newCart = [...shoppingCart];
     const index = newCart.indexOf(product);
@@ -61,9 +62,28 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
     setTotal(newTotal || 0);
   };
 
+  // Log the data
   const handleCheckout = () => {
     console.log("Shopping Cart: ", shoppingCart);
     console.log("Total: $", total);
+    if (shoppingCart.length > 0) {
+      window.alert(`
+      Shopping Cart: ${shoppingCart.map(
+        (e) => `
+      ---------------------------------------
+        Product: ${e.product.name}
+        Size: ${e.size}
+        Quantity: ${e.quantity}
+      ---------------------------------------
+      `,
+      )}
+      ---------------------------------------
+      TOTAL:$ ${total}
+      ---------------------------------------
+      `);
+    } else {
+      window.alert("Shopping Cart empty");
+    }
   };
 
   useEffect(() => {
@@ -74,6 +94,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
     <div className="w-screen h-screen bg-black bg-opacity-70 absolute z-10 flex justify-end">
       <div className=" w-screen h-screen sm:w-51.5 bg-black border-b border-l border-white flex  flex-col md:justify-between items-center">
         <p
+          shoppingCart
           className="self-end py-4 md:py-10 px-10 font-bold text-sm md:text-2xl"
           onClick={toggleShoppingCart}
         >
