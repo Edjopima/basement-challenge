@@ -86,7 +86,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
             <p>${total}</p>
           </div>
           <div
-            className=" flex justify-center md:border-l border-t w-11/12 py-2  border-white md:w-72 md:py-6 md:px-8"
+            className=" flex justify-center md:border-l border-t md:border-t-0 w-11/12 py-2  border-white md:w-72 md:py-6 md:px-8"
             onClick={handleCheckout}
           >
             <Image alt="Checkout" height={42} src={checkout} width={235} />
