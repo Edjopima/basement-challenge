@@ -24,7 +24,7 @@ const ShoppingCartElement: React.FC<ShoppingCartItemProps> = ({item, changeQuant
           <p className=" text-sm md:text-4xl uppercase font-bold py-2">{product.name}</p>
           <p className=" text-xs md:text-2xl font-bold text-gray-400">{product.description}</p>
         </div>
-        <div className=" flex-col md:flex justify-between md:mt-4">
+        <div className="flex flex-col md:flex-row justify-between md:mt-4">
           <div>
             <div className="flex items-center text-xs md:text-2xl font-bold my-1">
               <p>QUANTITY:</p>
