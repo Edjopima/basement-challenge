@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import type {NextPage} from "next";
 import Image from "next/image";
+import fetch from "isomorphic-unfetch";
 
 import Navbar from "../components/Navbar/Navbar";
 import TextBanner from "../components/TextBanner/TextBanner";
@@ -11,17 +12,22 @@ import footer from "../public/footer.svg";
 import {Product} from "../product/types";
 import {ShoppingCartItem} from "../types/shoppingCartTypes";
 
-const Home: NextPage = () => {
-  const [productList, setProductList] = useState<Product[]>([]);
+export const getStaticProps = async () => {
+  const response = await fetch(
+    "https://basement-challenge-i2ox56lwn-edjopima.vercel.app/api/products",
+  );
+  const productList = await response.json();
+
+  return {
+    props: {
+      productList: productList.products,
+    },
+  };
+};
+
+const Home = ({productList}: {productList: Product[]}) => {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
   const [show, setShow] = useState<boolean>(false);
-
-  useEffect(() => {
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) => setProductList(data.products))
-      .catch((err) => console.log(err));
-  }, []);
 
   const toggleShoppingCart = (): any => {
     setShow(!show);
