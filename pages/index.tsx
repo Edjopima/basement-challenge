@@ -29,6 +29,7 @@ const Home = ({productList}: {productList: Product[]}) => {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
   const [show, setShow] = useState<boolean>(false);
 
+  // shopping cart funcitons
   const toggleShoppingCart = (): any => {
     setShow(!show);
   };
@@ -50,6 +51,7 @@ const Home = ({productList}: {productList: Product[]}) => {
     window.localStorage.setItem("cart", JSON.stringify(shoppingCart));
   };
 
+  // load the shopping cart from the local storage when the app has been rendered
   useEffect(() => {
     const rawCart = window.localStorage.getItem("cart");
 
