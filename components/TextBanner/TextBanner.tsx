@@ -9,7 +9,7 @@ const TextBanner: React.FC = () => {
       <h1 className="animate-ticker2 text-2xl md:text-4xl" id="ticker2">
         {"A man can't have enough basement. swag - A man can't have enough basement. swag - "}
       </h1>
-  </div>
+    </div>
   );
 };
 
