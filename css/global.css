@@ -35,4 +35,10 @@ a {
   .hover-trigger:hover .hover-target {
       display: block;
   }
+  #ticker {
+    animation-delay: -40s;
+  }
+  #ticker2 {
+    animation-delay: -20s;
+  }
 }
